@@ -1,0 +1,24 @@
+#include<queue>
+void printLevelWise(TreeNode<int>* root) {
+    if(root==NULL)
+    {
+        return;
+    }
+    queue<TreeNode<int>*> PE;
+    PE.push(root);
+    while(!PE.empty())
+    {
+        TreeNode<int>* top = PE.front();
+        PE.pop();
+        cout<<top->data<<":";
+        for(int i=0;i<top->children.size();i++)
+        {
+            cout<<top->children[i]->data;
+            if(i+1!=top->children.size())
+            {
+                cout<<',';
+            }
+            PE.push(top->children[i]);
+        }
+        cout<<endl; 
+    }
